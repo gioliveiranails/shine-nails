@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shine Nails - Primeiros Passos | Do Zero à Excelência</title>
+  <meta name="description" content="Aprenda a construir unhas elegantes, naturais e sofisticadas, dominando técnica, biossegurança e estrutura profissional.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==================== CSS VARIABLES ==================== */
+    :root {
+      --bg: #2b0203;
+      --bg-light: #3a0a0b;
+      --text: #f8eadd;
+      --text-muted: rgba(248, 234, 221, 0.7);
+      --accent: #c9a84c;
+      --accent-muted: rgba(201, 168, 76, 0.3);
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    /* ==================== RESET & BASE ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ==================== UTILITY CLASSES ==================== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 6rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background-color: var(--accent);
+      margin: 2rem auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.1rem 3rem;
+      border-radius: 0;
+      font-weight: 500;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: transparent;
+      color: var(--accent);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    .btn-outline:hover,
+    .btn-outline:focus {
+      background-color: var(--text);
+      color: var(--bg);
+    }
+
+    .btn:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ==================== HEADER ==================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(43, 2, 3, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(248, 234, 221, 0.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--accent);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 1.5px;
+      background-color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('/images/fundo-new.jpeg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.30;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 750px;
+    }
+
+    .hero-logo {
+      width: 320px;
+      margin: 0 auto 3rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      font-weight: 300;
+      animation: fadeInUp 1s ease 0.2s backwards;
+    }
+
+    .hero .highlight-text {
+      color: var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      display: block;
+    }
+
+    .hero .btn {
+      animation: fadeInUp 1s ease 0.4s backwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==================== TRANSFORMATION SECTION ==================== */
+    .transformation {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+    }
+
+    .transformation h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .transformation-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .transformation-list {
+      max-width: 650px;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+    .transformation-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(248, 234, 221, 0.06);
+      font-weight: 300;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .transformation-list li:last-child {
+      border-bottom: none;
+    }
+
+    .list-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      fill: var(--accent);
+    }
+
+    /* ==================== FREEDOM SECTION ==================== */
+    .freedom {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+    }
+
+    .freedom h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .freedom-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .freedom-card {
+      padding: 2rem;
+      border: 1px solid rgba(248, 234, 221, 0.08);
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .freedom-card:hover {
+      border-color: var(--accent-muted);
+      background-color: rgba(248, 234, 221, 0.02);
+    }
+
+    .freedom-card-icon {
+      width: 36px;
+      height: 36px;
+      fill: var(--accent);
+      margin: 0 auto 1rem;
+    }
+
+    .freedom-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .freedom-quote {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ==================== HOW IT WORKS ==================== */
+    .how-it-works {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+    }
+
+    .how-it-works h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .how-card {
+      padding: 2.5rem;
+      border: 1px solid rgba(248, 234, 221, 0.08);
+      position: relative;
+    }
+
+    .how-card-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .how-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .how-card p {
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    /* ==================== EXPERIENCE ==================== */
+    .experience {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+      text-align: center;
+    }
+
+    .experience h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .experience p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ==================== RESULTS GALLERY ==================== */
+    .results {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+    }
+
+    .results h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .results-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .results-gallery img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      filter: brightness(0.95);
+      transition: all 0.4s ease;
+    }
+
+    .results-gallery img:hover {
+      filter: brightness(1.05);
+      transform: scale(1.02);
+    }
+
+    /* ==================== FEEDBACKS ==================== */
+    .feedbacks {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+    }
+
+    .feedbacks h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .feedbacks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+    }
+
+    .feedback-card {
+      border: 1px solid rgba(248, 234, 221, 0.08);
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .feedback-card:hover {
+      border-color: var(--accent-muted);
+    }
+
+    .feedback-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .feedback-card.photo-card img {
+      height: 360px;
+      object-fit: cover;
+    }
+
+    .feedbacks-highlight {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .feedbacks-highlight .feedback-card {
+      max-width: 500px;
+    }
+
+    .feedbacks-highlight .feedback-card img {
+      height: 420px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .feedbacks-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .feedback-card.photo-card img {
+        height: 300px;
+      }
+
+      .feedbacks-highlight .feedback-card img {
+        height: 350px;
+      }
+    }
+
+    /* ==================== INSTRUCTOR ==================== */
+    .instructor {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+    }
+
+    .instructor h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .instructor-content {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .instructor-image {
+      flex: 0 0 260px;
+    }
+
+    .instructor-image img {
+      width: 260px;
+      height: 340px;
+      object-fit: cover;
+    }
+
+    .instructor-bio {
+      flex: 1;
+    }
+
+    .instructor-bio h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .instructor-bio p {
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.9;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* ==================== PRICING ==================== */
+    .pricing {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+    }
+
+    .pricing h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(248, 234, 221, 0.1);
+      text-align: center;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .pricing-card:hover {
+      border-color: var(--accent-muted);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent);
+      color: var(--bg);
+      padding: 0.35rem 1.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .pricing-card-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .pricing-card .price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+    }
+
+    .pricing-card .price-detail {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card .price-installment {
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(248, 234, 221, 0.04);
+    }
+
+    .pricing-card li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-card li svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      fill: var(--accent);
+    }
+
+    .pricing-card .btn {
+      width: 100%;
+    }
+
+    /* ==================== FAQ ==================== */
+    .faq {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+    }
+
+    .faq h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(248, 234, 221, 0.08);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--accent);
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .faq-answer.active {
+      max-height: 500px;
+      padding-bottom: 1.5rem;
+    }
+
+    /* ==================== CTA FINAL ==================== */
+    .cta-final {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+      text-align: center;
+      padding: 8rem 0;
+    }
+
+    .cta-final h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .cta-final p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-link-icon {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+      fill: currentColor;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(248, 234, 221, 0.06);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 300;
+    }
+
+.online-content-list {
+  margin-top: 15px;
+  padding-left: 18px;
+}
+
+.online-content-list li {
+  margin-bottom: 6px;
+}
+
+
+    /* ==================== STICKY CTA ==================== */
+    .sticky-cta {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+    }
+
+    .sticky-cta .btn {
+      font-size: 0.75rem;
+      padding: 0.9rem 2rem;
+      background-color: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+
+    .sticky-cta .btn:hover {
+      background-color: transparent;
+      color: var(--accent);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: var(--bg);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(248, 234, 221, 0.08);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      .nav-links.active {
+        transform: translateX(0);
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-logo {
+        width: 220px;
+      }
+
+      .freedom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .instructor-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .instructor-image {
+        flex: none;
+      }
+
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .sticky-cta {
+        bottom: 1rem;
+        right: 1rem;
+      }
+
+      .sticky-cta .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.7rem;
+      }
+    }
+
+    /* ==================== ACCESSIBILITY ==================== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    *:focus {
+      outline: 1px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <img src="/images/logo-curso.png" alt="Curso Shine Nails">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#como-funciona">Curso</a></li>
+        <li><a href="#instrutora">Instrutora</a></li>
+        <li><a href="#investimento">Investimento</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu de navegacao">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <img src="/images/logo-curso.png" alt="Curso Shine Nails" class="hero-logo">
+        <h1>O curso que vai te fazer sair do zero a excelência na naturalidade</h1>
+        <p>Aprenda a construir unhas elegantes, naturais e sofisticadas, dominando técnica, biosseguranca e estrutura profissional.</p>
+        <span class="highlight-text">O Shine Nails não é sé mais um curso, é uma experiência que vai permitir que você alcance a vida que tanto sonha, trabalhando menos e faturando mais.</span>
+        <a href="#investimento" class="btn btn-primary">Quero me tornar uma Nail Designer de excelência</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TRANSFORMATION ==================== -->
+  <section class="section transformation">
+    <div class="container">
+      <h2>Resultado de alunas: do zero a excelência</h2>
+      <div class="divider"></div>
+      <p class="transformation-subtitle">O Shine Nails vai te capacitar como profissional</p>
+      <ul class="transformation-list">
+        <li>
+          <svg class="list-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          Ensinar a entregar estrutura natural com excelência
+        </li>
+        <li>
+          <svg class="list-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          Entender de biosseguranca de forma completa
+        </li>
+        <li>
+          <svg class="list-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          Saber captar clientes e construir autoridade
+        </li>
+        <li>
+          <svg class="list-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          Se tornar reconhecida e valorizada no mercado
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== FREEDOM ==================== -->
+  <section class="section freedom">
+    <div class="container">
+      <h2>A liberdade que voce merece</h2>
+      <div class="divider"></div>
+      <div class="freedom-grid">
+        <div class="freedom-card">
+          <svg class="freedom-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/>
+          </svg>
+          <p>Ter tempo de qualidade com quem ama</p>
+        </div>
+        <div class="freedom-card">
+          <svg class="freedom-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM6.5 17.5L14.01 14.01L17.5 6.5L9.99 9.99L6.5 17.5ZM12 10.9C12.61 10.9 13.1 11.39 13.1 12C13.1 12.61 12.61 13.1 12 13.1C11.39 13.1 10.9 12.61 10.9 12C10.9 11.39 11.39 10.9 12 10.9Z"/>
+          </svg>
+          <p>Ter liberdade geografica e poder viajar</p>
+        </div>
+        <div class="freedom-card">
+          <svg class="freedom-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.8 10.9C9.53 10.31 8.8 9.7 8.8 8.75C8.8 7.66 9.81 6.9 11.5 6.9C13.28 6.9 13.94 7.75 14 9H16.21C16.14 7.28 15.09 5.7 13 5.19V3H10V5.16C8.06 5.58 6.5 6.84 6.5 8.77C6.5 11.08 8.41 12.23 11.2 12.9C13.7 13.5 14.2 14.38 14.2 15.31C14.2 16 13.71 17.1 11.5 17.1C9.44 17.1 8.63 16.18 8.52 15H6.32C6.44 17.19 8.08 18.42 10 18.83V21H13V18.85C14.95 18.48 16.5 17.35 16.5 15.3C16.5 12.46 14.07 11.49 11.8 10.9Z"/>
+          </svg>
+          <p>Ter liberdade financeira para cuidar de si</p>
+        </div>
+        <div class="freedom-card">
+          <svg class="freedom-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          <p>Realizar seus maiores sonhos</p>
+        </div>
+      </div>
+      <p class="freedom-quote">"Após a experiência Shine Nails, a liberdade de ser dona do seu próprio negócio sera consequência do seu esforço e dedicação."</p>
+    </div>
+  </section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="section how-it-works" id="como-funciona">
+  <div class="container">
+    <h2>Como o curso funciona</h2>
+    <div class="divider"></div>
+    <div class="how-grid">
+      
+      <div class="how-card">
+        <span class="how-card-label">Parte Online</span>
+        <h3>Aulas objetivas</h3>
+        <p>Sem enrolação, com demonstrações e desenhos explicativos para facilitar o aprendizado. Assista quando e onde quiser, no seu próprio ritmo.</p>
+
+        <ul class="online-content-list">
+          <li>Anatomia da unha natural</li>
+          <li>Biossegurança profissional</li>
+          <li>Extensores e estruturas</li>
+          <li>Química dos produtos</li>
+          <li>Criação de negócio na área de unhas</li>
+        </ul>
+      </div>
+
+      <div class="how-card">
+  <span class="how-card-label">Parte Presencial - VIP</span>
+  <h3>Imersão prática completa</h3>
+  <p>Após concluir as aulas teóricas, o presencial é individual, com acompanhamento direto para garantir seu resultado de excelência.</p>
+
+  <ul class="online-content-list">
+    <li>Início às 9h, término previsto às 17h</li>
+    <li>Manhã: teoria da estrutura e demonstração da técnica</li>
+    <li>Pausa de 40 minutos para almoço</li>
+    <li>Tarde: prática e reprodução na outra mão</li>
+    <li>Pausa para coffee break</li>
+    <li>Entrega e assinatura do certificado</li>
+  </ul>
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- ==================== EXPERIENCE ==================== -->
+  <section class="section experience">
+    <div class="container">
+      <h2>Uma experiência única</h2>
+      <div class="divider"></div>
+      <p>Experiência única e personalizada, criada para ensinar os primeiros passos de uma iniciante na profissão. Cada detalhe foi pensado para que você evolua com confiança e desenvolva sua própria identidade profissional.</p>
+    </div>
+  </section>
+
+  <!-- ==================== RESULTS GALLERY ==================== -->
+  <section class="section results">
+    <div class="container">
+      <h2>Resultado das alunas</h2>
+      <div class="divider"></div>
+      <div class="results-gallery">
+        <img src="/images/resultado-3.jpeg" alt="Resultado de aluna - unhas naturais com acabamento perfeito">
+        <img src="/images/aluna-resultado-1.jpeg" alt="Resultado de aluna - unhas naturais com brilho sutil">
+        <img src="/images/aluna-resultado-2.jpeg" alt="Resultado de aluna - unhas clean com acabamento impecavel">
+        <img src="/images/aluna-resultado-3.jpeg" alt="Resultado de aluna - unhas nude com formato elegante">
+        <img src="/images/resultado-1.png" alt="Resultado de aluna - aplicacao durante o curso">
+        <img src="/images/resultado-2.png" alt="Resultado de aluna - preparo profissional">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEEDBACKS ==================== -->
+  <section class="section feedbacks">
+    <div class="container">
+      <h2>O que as alunas dizem</h2>
+      <div class="divider"></div>
+      <div class="feedbacks-grid">
+        <div class="feedback-card">
+          <img src="/images/feedback-1.jpeg" alt="Feedback de aluna: O curso e maravilhoso, voce explica com muita calma e paciencia, tudo e muito detalhado">
+        </div>
+        <div class="feedback-card">
+          <img src="/images/feedback-2.jpeg" alt="Feedback de aluna: Muito obrigada pelo dia de hoje, aprendi muito, admiro muito seu trabalho">
+        </div>
+      </div>
+      <div class="feedbacks-grid">
+        <div class="feedback-card">
+          <img src="/images/feedback-3.jpeg" alt="Feedback de aluna: Consegui entender muito bem todos os topicos, cada tema foi muito importante">
+        </div>
+        <div class="feedback-card photo-card">
+          <img src="/images/certificado-aluna.jpeg" alt="Aluna recebendo certificado do curso Shine Nails com a instrutora Giselly Oliveira">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INSTRUCTOR ==================== -->
+  <section class="section instructor" id="instrutora">
+    <div class="container">
+      <h2>Sobre a instrutora</h2>
+      <div class="divider"></div>
+      <div class="instructor-content">
+        <div class="instructor-image">
+          <img src="/images/instrutora.jpeg" alt="Giselly Oliveira">
+        </div>
+        <div class="instructor-bio">
+  <h3>Giselly Oliveira</h3>
+  <p>Apaixonada por moda, beleza e detalhes desde sempre, desenvolvi um método próprio de alongamento com foco em naturalidade, elegância e estrutura correta — que hoje é a base do ensino no Shine Nails.</p>
+  <p>Com experiência na área e atendendo clientes que buscam unhas sofisticadas e naturais, agora compartilho minhas técnicas e meu olhar profissional para ajudar iniciantes a começarem da forma certa, com segurança e resultado de excelência.</p>
+  <p>Minha missão é formar nail designers confiantes, que entreguem um trabalho valorizado, conquistem sua independência financeira e construam uma carreira sólida através da naturalidade e da técnica correta.</p>
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING ==================== -->
+  <section class="section pricing" id="investimento">
+    <div class="container">
+      <h2>Investimento</h2>
+      <div class="divider"></div>
+      <div class="pricing-cards">
+        <!-- OPCAO 1 -->
+        <div class="pricing-card">
+          <span class="pricing-card-label">Opção 1</span>
+          <h3>Pagamento integral</h3>
+          <div class="price">R$ 947</div>
+          <p class="price-detail">à vista no Pix</p>
+          <p class="price-installment">ou 10x de R$ 109,70 no cartao</p>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Acesso completo ao curso
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Envio do contrato online
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Liberação imediata das aulas teóricas
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Parte presencial VIP inclusa
+            </li>
+          </ul>
+          <a href="https://api.whatsapp.com/send/?phone=41997436493&text=Ol%C3%A1%2C%20tenho%20interesse%20no%20curso%20Shine%20Nails%20-%20pagamento%20integral!" target="_blank" class="btn btn-primary">Falar com a instrutora</a>
+        </div>
+
+        <!-- OPCAO 2 -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Mais escolhido</div>
+          <span class="pricing-card-label">Opção 2</span>
+          <h3>Matrícula + Parcelamento</h3>
+          <div class="price">R$ 1.040</div>
+          <p class="price-detail">Matrícula de R$ 150 no Pix</p>
+          <p class="price-installment">+ 10x de R$ 89,00</p>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Acesso completo ao curso
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Envio do contrato apos matrícula
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Link de pagamento do restante
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Liberação das aulas após assinatura
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Parte presencial VIP inclusa
+            </li>
+          </ul>
+          <a href="https://api.whatsapp.com/send/?phone=41997436493&text=Ol%C3%A1%2C%20tenho%20interesse%20no%20curso%20Shine%20Nails%20-%20matricula%20%2B%20parcelamento!" target="_blank" class="btn btn-primary">Falar com a instrutora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <h2>Perguntas frequentes</h2>
+      <div class="divider"></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Preciso levar modelo?</button>
+          <div class="faq-answer">
+            <p>Não. A demosntração será em uma mão sua e você treina na outra.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Quantas alunas no dia?</button>
+          <div class="faq-answer">
+            <p>Curso VIP: apenas eu e você.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Preciso levar material?</button>
+          <div class="faq-answer">
+            <p>Nâo. Todos os materiais serão fornecidos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA FINAL ==================== -->
+  <section class="section cta-final">
+    <div class="container">
+      <h2>Chegou a hora de você começar a viver e não sobreviver.</h2>
+      <div class="divider"></div>
+      <p>Sua transformação profissional começa agora.</p>
+      <a href="https://api.whatsapp.com/send/?phone=41997436493&text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20curso%20Shine%20Nails!" target="_blank" class="btn btn-primary">Falar com a instrutora</a>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img src="/images/logo-curso.png" alt="Curso Shine Nails" style="height: 55px; width: auto; margin-bottom: 1rem;">
+          <p>Aprenda a construir unhas elegantes, naturais e sofisticadas.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Links</h3>
+          <a href="#como-funciona">Curso</a>
+          <a href="#instrutora">Instrutora</a>
+          <a href="#investimento">Investimento</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-section">
+          <h3>Contato</h3>
+          <a href="https://api.whatsapp.com/send/?phone=41997436493" target="_blank">
+            <svg class="footer-link-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
+            </svg>
+            Fale com a instrutora
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Shine Nails - Primeiros Passos. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== STICKY CTA ==================== -->
+  <div class="sticky-cta">
+    <a href="https://api.whatsapp.com/send/?phone=41997436493&text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20curso%20Shine%20Nails!" target="_blank" class="btn">Fale comigo</a>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // ==================== MOBILE MENU ====================
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // ==================== SMOOTH SCROLL ====================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 70;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // ==================== SCROLL REVEAL ====================
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // ==================== FAQ ACCORDION ====================
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isActive = question.classList.contains('active');
+
+        document.querySelectorAll('.faq-question').forEach(q => {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.remove('active');
+        });
+
+        if (!isActive) {
+          question.classList.add('active');
+          answer.classList.add('active');
+        }
+      });
+    });
+
+    // ==================== KEYBOARD ACCESSIBILITY ====================
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
